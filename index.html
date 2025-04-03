@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Relacionamento - Vendedor Interno</title>
+    <!-- Garantindo que o Font Awesome carregue corretamente -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Garantindo que o CSS carregue corretamente -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js para os gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" integrity="sha256-+8RZJua0aEWg+QVVKg4LEzEEm/8RFez5Tb4JBNiV5xA=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Barra superior com logo e informações do usuário -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="logo-container">
+                <img src="sua-logo.png" alt="Logo Grupo Atos">
+                <h2>Programa de Relacionamento</h2>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">V</div>
+                <div class="user-details">
+                    <div class="user-name nome-usuario">Vendedor</div>
+                    <div class="user-role tipo-usuario">Vendedor Interno</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra de navegação -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <ul>
+                <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Desempenho</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Histórico</a></li>
+                <li><a href="#"><i class="fas fa-trophy"></i> Metas</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
+                <li><a href="login.html" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <a href="#">Início</a>
+            <span class="separator">/</span>
+            <span class="current">Dashboard</span>
+        </div>
+
+        <!-- Banner de boas-vindas -->
+        <div class="banner">
+            <i class="fas fa-bullhorn"></i>
+            <div>
+                <strong>Bem-vindo ao Painel de Vendedor Interno!</strong>
+                Você está no nível <span class="nivel-badge">Corretor</span>
+            </div>
+        </div>
+
+        <!-- Cards de estatísticas -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-title">Vendas do Mês</div>
+                    <div class="stat-value">R$ 18.546,00</div>
+                    <div class="stat-comparison positive">
+                        <i class="fas fa-arrow-up"></i> 12% acima da meta
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-title">Vidas Contratadas</div>
+                    <div class="stat-value">47</div>
+                    <div class="stat-comparison positive">
+                        <i class="fas fa-arrow-up"></i> 5% acima da meta
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon teal">
+                    <i class="fas fa-percentage"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-title">Adimplência</div>
+                    <div class="stat-value">94,2%</div>
+                    <div class="stat-comparison positive">
+                        <i class="fas fa-arrow-up"></i> 2.3% melhor que o mês anterior
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon red">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-title">Nível de Carreira</div>
+                    <div class="stat-value">Corretor</div>
+                    <div class="stat-comparison">
+                        <i class="fas fa-info-circle"></i> 7 pontos para próximo nível
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="icon"><i class="fas fa-user"></i></span>
+                <h2>Dados do Profissional</h2>
+            </div>
+            <div class="divider"></div>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="categoria">Categoria Atual</label>
+                    <select id="categoria" required>
+                        <option value="" disabled>Selecione sua categoria</option>
+                        <option value="Treinando">Treinando</option>
+                        <option value="Consultor">Consultor</option>
+                        <option value="Corretor" selected>Corretor</option>
+                        <option value="Especialista">Especialista</option>
+                        <option value="Representante">Representante</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="periodo">Período de Avaliação</label>
+                    <select id="periodo" required>
+                        <option value="" disabled>Selecione o período</option>
+                        <option value="Mensal" selected>Mensal</option>
+                        <option value="Trimestral">Trimestral</option>
+                        <option value="Semestral">Semestral</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="vendas">Vendas PF/PME</label>
+                    <input type="number" id="vendas" placeholder="Valor total de vendas realizadas" value="15240" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="adesao">Vendas Adesão</label>
+                    <input type="number" id="adesao" placeholder="Valor de vendas por adesão" value="3400" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="vidas">Vidas Realizadas</label>
+                    <input type="number" id="vidas" placeholder="Quantidade de vidas contratadas" value="47" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="adimplencia">Adimplência (%)</label>
+                    <input type="number" id="adimplencia" placeholder="Percentual de adimplência (0-100)" max="100" value="94.2" required>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button id="calcular" class="btn-calcular">
+                    <i class="fas fa-calculator"></i>
+                    Calcular Resultados
+                </button>
+            </div>
+        </div>
+
+        <div class="results-grid">
+            <div class="card result-card">
+                <div class="card-header">
+                    <span class="icon"><i class="fas fa-chart-line"></i></span>
+                    <h2>Resultados da Avaliação</h2>
+                </div>
+                <div class="divider"></div>
+                
+                <div id="resultado-content">
+                    <p class="info-text">Complete o formulário e clique em Calcular para ver os resultados</p>
+                </div>
+            </div>
+
+            <div class="card chart-card">
+                <div class="card-header">
+                    <span class="icon"><i class="fas fa-chart-bar"></i></span>
+                    <h2>Visualização do Desempenho</h2>
+                </div>
+                <div class="divider"></div>
+                
+                <div id="grafico-container">
+                    <div id="sem-grafico">
+                        <span class="icon large"><i class="fas fa-chart-area"></i></span>
+                        <p>Clique em Calcular para gerar o gráfico</p>
+                    </div>
+                    <div id="charts-container" style="display: none;">
+                        <div class="charts-row">
+                            <div class="chart-box">
+                                <canvas id="vendas-chart"></canvas>
+                            </div>
+                            <div class="chart-box">
+                                <canvas id="vidas-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-box full-width">
+                            <canvas id="radar-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                &copy; 2025 Grupo Atos - Programa de Relacionamento
+            </div>
+            <div class="footer-links">
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Suporte</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Carregue o script após o DOM estar completamente carregado -->
+    <script src="script.js"></script>
+</body>
+</html>
